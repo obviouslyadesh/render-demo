@@ -26,4 +26,7 @@ def predict():
     return render_template('index.html', prediction_text='Prediction: {}'.format(output))
 
 if __name__ == "__main__":
-    app.run(debug=True)  # Ensure debug is set to True
+    import os
+    port = int(os.environ.get('PORT', 5000))  # Use the port specified by the environment
+    app.run(host='0.0.0.0', port=port)  # Allow external access
+
