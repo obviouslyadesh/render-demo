@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Road Accident Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 1.5em;
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Road Accident Prediction for 2024</h2>
+        <form action="/predict" method="post">
+            <label for="season">Season:</label>
+            <select name="season" required>
+                <option value="spring">Spring</option>
+                <option value="summer">Summer</option>
+                <option value="monsoon">Monsoon</option>
+                <option value="autumn">Autumn</option>
+                <option value="winter">Winter</option>
+            </select>
+            
+            <label for="location">Location:</label>
+            <input type="text" name="location" required placeholder="Enter accident-prone location">
+            
+            <label for="weather_conditions">Weather Conditions:</label>
+            <input type="text" name="weather_conditions" required placeholder="Sunny, Rainy, Foggy, etc.">
+            
+            <label for="time_of_day">Time of Day:</label>
+            <select name="time_of_day" required>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+                <option value="night">Night</option>
+            </select>
+            
+            <label for="traffic_volume">Traffic Volume:</label>
+            <input type="number" name="traffic_volume" required placeholder="Number of vehicles per hour">
+            
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
